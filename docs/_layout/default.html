@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include head.html %}
+    <style>
+      body {
+        display: flex;
+        margin: 0;
+        font-family: sans-serif;
+      }
+      nav.sidebar {
+        width: 250px;
+        background: #f4f4f4;
+        padding: 1rem;
+        height: 100vh;
+        overflow-y: auto;
+        position: sticky;
+        top: 0;
+      }
+      main.content {
+        flex: 1;
+        padding: 2rem;
+      }
+      nav.sidebar a {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #333;
+        text-decoration: none;
+      }
+      nav.sidebar a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="sidebar">
+      <h3>Posts</h3>
+      <ul>
+        {% for post in site.posts %}
+          <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <main class="content">
+      {{ content }}
+    </main>
+  </body>
+</html>
